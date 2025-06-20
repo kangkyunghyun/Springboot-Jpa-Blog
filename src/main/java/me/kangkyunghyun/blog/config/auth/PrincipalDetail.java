@@ -1,5 +1,6 @@
 package me.kangkyunghyun.blog.config.auth;
 
+import lombok.Getter;
 import me.kangkyunghyun.blog.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Getter
 public class PrincipalDetail implements UserDetails {
     private User user; // 컴포지션
 

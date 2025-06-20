@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class BoardController {
 
     @GetMapping({"", "/"})
-    public String index(@AuthenticationPrincipal PrincipalDetail principalDetail) {
-        System.out.println("로그인 사용자 아이디: " + principalDetail.getUsername());
+    public String index() {
         return "index";
+    }
+
+    // USER 권한이 필요
+    @GetMapping("/board/saveForm")
+    public String saveForm() {
+        return "board/saveForm";
     }
 }
