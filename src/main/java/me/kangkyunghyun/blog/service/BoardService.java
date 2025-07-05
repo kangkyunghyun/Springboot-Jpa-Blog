@@ -1,10 +1,13 @@
 
 package me.kangkyunghyun.blog.service;
 
+import me.kangkyunghyun.blog.dto.ReplySaveRequestDto;
 import me.kangkyunghyun.blog.model.Board;
+import me.kangkyunghyun.blog.model.Reply;
 import me.kangkyunghyun.blog.model.RoleType;
 import me.kangkyunghyun.blog.model.User;
 import me.kangkyunghyun.blog.repository.BoardRepository;
+import me.kangkyunghyun.blog.repository.ReplyRepository;
 import me.kangkyunghyun.blog.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,7 +22,13 @@ import java.util.List;
 public class BoardService {
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private ReplyRepository replyRepository;
 
     @Transactional
     public void 글쓰기(Board board, User user) {
@@ -55,5 +64,27 @@ public class BoardService {
         board.setTitle(requestBoard.getTitle());
         board.setContent(requestBoard.getContent());
         // 해당 함수 종료시에 트랜잭션이 Service가 종료될 때 트랜잭션이 종료됨. 이때 더티체킹 -> 자동 업데이트 DB로 flush
+    }
+
+    @Transactional
+    public void 댓글쓰기(ReplySaveRequestDto replySaveRequestDto) {
+
+//        User user = userRepository.findById(replySaveRequestDto.getUserId()).orElseThrow(()->{
+//            return new IllegalArgumentException("댓글 쓰기 실패 : 유저 id를 찾을 수 없습니다." + replySaveRequestDto.getUserId());
+//        });
+//
+//        Board board = boardRepository.findById(replySaveRequestDto.getBoardId()).orElseThrow(()->{
+//            return new IllegalArgumentException("댓글 쓰기 실패 : 게시글 id를 찾을 수 없습니다.");
+//        });
+//
+//        Reply reply = Reply.builder()
+//                .user(user)
+//                .board(board)
+//                .content(replySaveRequestDto.getContent())
+//                .build();
+//
+//        replyRepository.save(reply);
+
+        replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
     }
 }

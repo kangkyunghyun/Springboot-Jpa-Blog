@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import me.kangkyunghyun.blog.dto.ReplySaveRequestDto;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
