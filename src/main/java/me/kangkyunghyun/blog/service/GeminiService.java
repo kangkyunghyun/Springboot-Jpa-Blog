@@ -15,7 +15,7 @@ public class GeminiService {
     @Value("abstract-plane-478703-b9")
     private String projectId;
 
-    private final String location = "asia-northeast3";
+    private final String location = "us-central1";
     private final String modelName = "gemini-1.5-flash-001";
 
     public String getSummary(String text) {
