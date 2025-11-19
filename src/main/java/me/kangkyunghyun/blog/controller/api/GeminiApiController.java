@@ -12,12 +12,12 @@ public class GeminiApiController {
     @Autowired
     private GeminiService geminiService;
 
-    @GetMapping("/gemini/summary")
+    @GetMapping("/api/gemini/summary")
     public String getSummary(@RequestParam String text) {
         return geminiService.getSummary(text);
     }
 
-    @GetMapping("/gemini/reply")
+    @GetMapping("/api/gemini/reply")
     public String generateReply(@RequestParam String text) {
         return geminiService.getSummary(text);
     }
