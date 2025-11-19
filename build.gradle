@@ -38,6 +38,8 @@ dependencies {
     implementation platform('com.google.cloud:libraries-bom:26.32.0')
     implementation 'com.google.protobuf:protobuf-java:3.25.3'
     implementation 'com.google.protobuf:protobuf-java-util:3.25.3'
+    implementation 'com.google.api:gax:2.42.0'
+    implementation 'com.google.api:gax-grpc:2.42.0'
     // 추가
     // 시큐리티 태그 라이브러리
     implementation 'org.springframework.security:spring-security-taglibs'
