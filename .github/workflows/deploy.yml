@@ -42,7 +42,7 @@ jobs:
           image: asia-northeast3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/blog-repo/blog-app:latest
           region: asia-northeast3
           # DB 연결 설정 및 환경변수 주입
-          flags: --allow-unauthenticated
+          flags: --add-cloudsql-instances=${{ secrets.GCP_SQL_INSTANCE }} --allow-unauthenticated
           env_vars: |
             DB_NAME=blog-db
             DB_USERNAME=root
