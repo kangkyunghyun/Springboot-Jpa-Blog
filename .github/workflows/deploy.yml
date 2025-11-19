@@ -42,17 +42,20 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Docker 로그인 (GCP 인증)
+            # 1. Docker 소켓 권한 부여 (이 줄이 핵심입니다!)
+            sudo chmod 666 /var/run/docker.sock
+            
+            # 2. Docker 로그인 (GCP 인증)
             gcloud auth configure-docker asia-northeast3-docker.pkg.dev --quiet
             
-            # 최신 이미지 당겨오기
+            # 3. 최신 이미지 당겨오기
             docker pull asia-northeast3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/blog-repo/blog-app:latest
             
-            # 기존 컨테이너 멈추고 삭제 (업데이트 위함)
+            # 4. 기존 컨테이너 멈추고 삭제
             docker stop blog-app || true
             docker rm blog-app || true
             
-            # 새 컨테이너 실행 (아까 수동으로 했던 명령어와 동일)
+            # 5. 새 컨테이너 실행
             docker run -d --name blog-app \
               -p 80:8080 \
               -e DB_NAME=blog-db \
@@ -61,5 +64,5 @@ jobs:
               -e CLOUD_SQL_INSTANCE="${{ secrets.GCP_SQL_INSTANCE }}" \
               asia-northeast3-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/blog-repo/blog-app:latest
             
-            # 안 쓰는 이미지 정리 (디스크 용량 확보)
+            # 6. 정리
             docker image prune -f
