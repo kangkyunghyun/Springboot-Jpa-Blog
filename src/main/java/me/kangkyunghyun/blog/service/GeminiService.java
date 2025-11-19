@@ -16,7 +16,7 @@ public class GeminiService {
     private String projectId;
 
     private final String location = "us-central1";
-    private final String modelName = "gemini-1.5-flash";
+    private final String modelName = "gemini-1.0-pro";
 
     public String getSummary(String text) {
         try (VertexAI vertexAI = new VertexAI(projectId, location)) {
