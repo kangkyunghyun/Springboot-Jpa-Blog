@@ -43,7 +43,7 @@ jobs:
           region: asia-northeast3
           # DB 연결 설정 및 환경변수 주입
           flags: |
-            --add-cloudsql-instances=${{ secrets.GCP_SQL_INSTANCE }}
+#            --add-cloudsql-instances=${{ secrets.GCP_SQL_INSTANCE }}
             --allow-unauthenticated
           env_vars: |
             DB_NAME=blog-db
