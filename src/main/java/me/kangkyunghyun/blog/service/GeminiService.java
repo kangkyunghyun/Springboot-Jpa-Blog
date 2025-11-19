@@ -4,7 +4,6 @@ import com.google.cloud.vertexai.VertexAI;
 import com.google.cloud.vertexai.api.GenerateContentResponse;
 import com.google.cloud.vertexai.generativeai.GenerativeModel;
 import com.google.cloud.vertexai.generativeai.ResponseHandler;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -12,10 +11,8 @@ import java.io.IOException;
 @Service
 public class GeminiService {
 
-    @Value("abstract-plane-478703-b9")
-    private String projectId;
-
-    private final String location = "us-central1";
+    private String projectId = "abstract-plane-478703-b9";
+    private final String location = "asia-northeast3";
     private final String modelName = "gemini-1.0-pro";
 
     public String getSummary(String text) {
