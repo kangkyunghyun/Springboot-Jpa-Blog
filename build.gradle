@@ -33,6 +33,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
     runtimeOnly 'com.mysql:mysql-connector-j'
+    runtimeOnly 'com.google.cloud.sql:mysql-socket-factory-connector-j-8:1.20.0'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     // 추가
     // 시큐리티 태그 라이브러리
