@@ -30,11 +30,18 @@ public class BoardService {
     @Autowired
     private ReplyRepository replyRepository;
 
+    @Autowired
+    private GeminiService geminiService;
+
     @Transactional
     public void 글쓰기(Board board, User user) {
+        String summary = geminiService.getSummary(board.getContent());
         board.setCount(0);
         board.setUser(user);
-        boardRepository.save(board);
+        board.setContent(board.getContent() + "\n\n[AI 요약]\n" + summary);
+        int savedId = boardRepository.save(board).getId();
+        String aiReply = geminiService.generateReply(board.getContent());
+        replyRepository.mSave(user.getId(), savedId, aiReply);
     }
 
     @Transactional(readOnly = true)
