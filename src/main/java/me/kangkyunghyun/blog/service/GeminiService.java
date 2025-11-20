@@ -13,7 +13,7 @@ public class GeminiService {
 
     private String projectId = "abstract-plane-478703-b9";
     private final String location = "asia-northeast3";
-    private final String modelName = "gemini-1.0-pro";
+    private final String modelName = "gemini-2.5-flash";
 
     public String getSummary(String text) {
         try (VertexAI vertexAI = new VertexAI(projectId, location)) {
