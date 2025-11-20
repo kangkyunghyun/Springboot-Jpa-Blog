@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "reply")
 public class Reply {
 
     @Id // Primary key

@@ -17,6 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Table(name = "board")
 public class Board {
 
     @Id

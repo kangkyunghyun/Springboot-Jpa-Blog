@@ -18,6 +18,7 @@ import java.sql.Timestamp;
 @Builder // 빌더 패턴!!
 @Entity // User 클래스가 MySQL에 테이블이 생성이 된다.
 //@DynamicInsert // insert시 null인 필드를 제외시켜준다.
+@Table(name = "user")
 public class User {
 
     @Id // Primary key
