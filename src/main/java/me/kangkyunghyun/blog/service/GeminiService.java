@@ -18,7 +18,7 @@ public class GeminiService {
     public String getSummary(String text) {
         try (VertexAI vertexAI = new VertexAI(projectId, location)) {
             GenerativeModel model = new GenerativeModel(modelName, vertexAI);
-            String prompt = "다음 내용을 3줄로 요약해줘. 말투는 친절하게 해요체로 해줘:\n\n" + text;
+            String prompt = "다음 내용을 3줄로 요약해줘. 말투는 친절하게 해요체로 해줘. 그리고 대답은 필요 없어 요약된 내용만 알려줘.:\n\n" + text;
             GenerateContentResponse response = model.generateContent(prompt);
             return ResponseHandler.getText(response);
 
@@ -31,7 +31,7 @@ public class GeminiService {
     public String generateReply(String text) {
         try (VertexAI vertexAI = new VertexAI(projectId, location)) {
             GenerativeModel model = new GenerativeModel(modelName, vertexAI);
-            String prompt = "다음 내용을 바탕으로 댓글을 작성해줘. 말투는 친절하게 해요체로 해줘:\n\n" + text;
+            String prompt = "다음 내용을 바탕으로 20글자 이내 댓글을 작성해줘. 말투는 친절하게 해요체로 해줘:\n\n" + text;
             GenerateContentResponse response = model.generateContent(prompt);
             return ResponseHandler.getText(response);
 

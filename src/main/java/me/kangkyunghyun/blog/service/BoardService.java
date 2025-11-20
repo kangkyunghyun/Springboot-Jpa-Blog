@@ -41,7 +41,7 @@ public class BoardService {
         board.setContent(board.getContent() + "\n\n[AI 요약]\n" + summary);
         int savedId = boardRepository.save(board).getId();
         String aiReply = geminiService.generateReply(board.getContent());
-        replyRepository.mSave(user.getId(), savedId, aiReply);
+        replyRepository.mSave(0, savedId, aiReply);
     }
 
     @Transactional(readOnly = true)
