@@ -36,7 +36,7 @@ public class BoardService {
     @Transactional
     public void 글쓰기(Board board, User user) {
         String summary = geminiService.getSummary(board.getContent());
-        String newContent = "<p>[AI 3줄 요약]\n" + summary + "\n\n\n</p>" + board.getContent();
+        String newContent = "<div>[AI 3줄 요약]\n" + summary + "\n\n\n</div>" + board.getContent();
         if (newContent != null) {
             newContent = newContent.replaceAll("(\r\n | \r | \n | \n\r)", "<br/>");
         }
