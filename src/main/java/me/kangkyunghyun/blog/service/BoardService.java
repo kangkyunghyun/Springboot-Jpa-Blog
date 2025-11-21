@@ -38,7 +38,7 @@ public class BoardService {
         String summary = geminiService.getSummary(board.getContent());
         board.setCount(0);
         board.setUser(user);
-        board.setContent(board.getContent() + "\n\n[AI 요약]\n" + summary);
+        board.setContent("[AI 3줄 요약]\n" + summary + "\n\n\n" + board.getContent());
         int savedId = boardRepository.save(board).getId();
         String aiReply = geminiService.generateReply(board.getContent());
         replyRepository.mSave(0, savedId, aiReply);
